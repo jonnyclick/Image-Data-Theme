@@ -53,7 +53,7 @@
             </header>
             <div class="header__news bg-white text-md text-white text-center py-2 px-2" style="background-color: #413f3f; font-size: 14px;">
                     <?php while(have_rows('news_bar', 'options')): the_row(); ?>
-                    <div class="header__news__item" style="line-height: 1;">
+                    <div class="header__news__item" style="line-height: 1.2;">
                         <?php the_sub_field('text'); ?>
                     </div>
                     <?php endwhile; ?>
