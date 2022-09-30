@@ -28,14 +28,14 @@ function scrollFunction() {
     const header = document.getElementById('main-header');
     const headerTagline = document.getElementById('header-tagline');
     
-    if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
-        header.classList.remove('lg:py-14');
-        header.classList.add('lg:py-4');
-        jQuery('#header-tagline').fadeOut();
+    // if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+    //     header.classList.remove('lg:py-14');
+    //     header.classList.add('lg:py-4');
+    //     jQuery('#header-tagline').fadeOut();
         
-    } else {
-        header.classList.remove('lg:py-4');
-        header.classList.add('lg:py-14');
-        jQuery('#header-tagline').fadeIn();
-    }
+    // } else {
+    //     header.classList.remove('lg:py-4');
+    //     header.classList.add('lg:py-14');
+    //     jQuery('#header-tagline').fadeIn();
+    // }
 }

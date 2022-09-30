@@ -59,7 +59,7 @@ if(get_field('service_colour') == 'yellow') {
 
         ?> 
 
-        <div class="h-viewport-80 max-h-792 mt-40 relative mb-9 lg:mb-6">
+        <div class="h-viewport-80 max-h-792 relative mb-9 lg:mb-6">
             <div class="h-full">
                 <div class="relative h-full">
                     <?php

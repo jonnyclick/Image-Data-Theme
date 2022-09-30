@@ -1,6 +1,6 @@
 <?php get_header(); ?>
     <div id="caseStudiesListing">
-        <div class="h-viewport-80 max-h-792 mt-40 relative mb-10">
+        <div class="h-viewport-80 max-h-792 relative mb-10">
             <div class="h-full">
                 <div class="relative h-full">
                     <img class="block mx-auto w-full h-full absolute top-0 left-0 right-0 object-cover" src="<?php echo imagedata__getThemeImageUrl('case-study-top.png'); ?>"/>

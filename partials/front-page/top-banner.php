@@ -1,4 +1,4 @@
-u<div id="front-top-banner" class="h-viewport-47 xl:h-viewport-65 mt-40 relative mb-186vw sm:mb-28">
+<div id="front-top-banner" class="h-viewport-47 xl:h-viewport-65 relative mb-186vw sm:mb-28">
     <div id="front-top-video-wrapper" class="h-full">
         <div id="front-top-video-container" class="relative h-full">
 	    <?php
@@ -8,7 +8,6 @@ u<div id="front-top-banner" class="h-viewport-47 xl:h-viewport-65 mt-40 relative
 			<?php
 		}
 
-		if(!get_field('home_video_image')) {
 	    ?>
             <video playsinline loop autoplay muted class="block mx-auto w-full h-full absolute top-0 left-0 right-0 object-cover">
                 <?php if(get_field('home_video')): ?>
@@ -17,9 +16,6 @@ u<div id="front-top-banner" class="h-viewport-47 xl:h-viewport-65 mt-40 relative
                     <source type="video/mp4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/video.mp4"/>
                 <?php endif; ?>
             </video>
-	   <?php
-		}
-	   ?>
         </div>
     </div>
 	<!-- -top-45vw -->

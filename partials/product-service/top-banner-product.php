@@ -22,7 +22,7 @@ if(get_field('product_colour') == 'yellow') {
 
 
 <?php /** @var array $args */ ?>
-<div class="h-viewport-80 max-h-792 mt-40 relative mb-9 lg:mb-6">
+<div class="h-viewport-80 max-h-792 relative mb-9 lg:mb-6">
     <div class="h-full">
         <div class="relative h-full">
             <?php echo get_the_post_thumbnail(get_the_ID(),'full',[

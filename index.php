@@ -5,7 +5,7 @@
 ?>
 
 <div id="newsListing">
-    <div class="h-viewport-80 max-h-792 mt-40 relative mb-10">
+    <div class="h-viewport-80 max-h-792 relative mb-10">
         <div class="h-full">
             <div class="relative h-full">
                 <?php if(get_field('news_banner_image', 'options')): ?>

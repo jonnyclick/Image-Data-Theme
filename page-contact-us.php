@@ -1,6 +1,6 @@
 <?php get_header(); the_post(); ?>
 <div id="contactPage">
-    <div class="h-viewport-80 max-h-595 mt-40 relative mb-20 lg:mb-24">
+    <div class="h-viewport-80 max-h-595 relative mb-20 lg:mb-24">
         <div class="h-full">
             <div class="relative h-full">
                     <?php if(get_field('contact_banner_image', 'options')): ?>

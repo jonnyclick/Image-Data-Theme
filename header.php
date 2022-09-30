@@ -16,40 +16,49 @@
 	</script>
     </head>
     <body <?php body_class(); ?>>
-        <div class="relative overflow-x-hidden">
-            <header id="main-header" class="fixed top-0 bg-light-grey w-full z-50 py-8 lg:py-14 px-8 transition-all duration-300">
-                <div class="max-w-1644 mx-auto flex justify-between items-center">
-                    <div id="header-left" class="max-w-15 lg:max-w-20">
-                        <a href="<?php echo home_url(); ?>">
-                            <img class="header-logo inline-block align-middle;" src="<?php echo imagedata__getThemeImageUrl('logo.png'); ?>"/>
-                        </a>
-                        <!-- <div id="header-tagline" class="header-tagline">
-                        </div> -->
+        <div class="relative">
+            <div class="header-wrapper z-50 top-0" style="position: sticky">
+                <header id="main-header" class="top-0 bg-light-grey w-full z-50 py-8 lg:py-4 px-8 transition-all duration-300">
+                    <div class="max-w-1644 mx-auto flex justify-between items-center">
+                        <div id="header-left" class="max-w-15 lg:max-w-20">
+                            <a href="<?php echo home_url(); ?>">
+                                <img class="header-logo inline-block align-middle;" src="<?php echo imagedata__getThemeImageUrl('logo.png'); ?>"/>
+                            </a>
+                            <!-- <div id="header-tagline" class="header-tagline">
+                            </div> -->
+                        </div>
+                        <div id="header-right" class="text-lg" style="z-index: 200;">
+                            <?php wp_nav_menu([
+                                'theme_location'=>'main',
+                                'container'=>'nav',
+                                'container_id'=>'main-nav-wrap',
+                                'container_class'=>'hidden lg:block',
+                                'menu_id'=>'main-nav',
+                                'menu_class'=>'px-4 lg:px-0 left-0 hidden lg:flex top-40.8 lg:top-auto fixed h-full lg:h-auto lg:relative w-full bg-light-grey lg:w-auto'
+                            ]); ?>
+                            <?php wp_nav_menu([
+                                'theme_location'=>'mobile-main',
+                                'container'=>'nav',
+                                'container_id'=>'mobile-main-nav-wrap',
+                                'container_class'=>'block lg:hidden',
+                                'menu_id'=>'mobile-main-nav',
+                                'menu_class'=>'px-4 lg:px-0 left-0 hidden top-28 lg:top-auto fixed h-full lg:h-auto lg:relative w-full bg-light-grey lg:w-auto'
+                            ]); ?>
+                            <button id="mobile-menu-button" class="block lg:hidden">
+                                <img class="block" id="mobile-menu-open-icon" src="<?php echo imagedata__getThemeImageUrl('icons/mobile-menu.png'); ?>"/>
+                                <img class="hidden" id="mobile-menu-close-icon" src="<?php echo imagedata__getThemeImageUrl('icons/x.png'); ?>"/>
+                            </button>
+                        </div>
                     </div>
-                    <div id="header-right" class="text-lg">
-                        <?php wp_nav_menu([
-                            'theme_location'=>'main',
-                            'container'=>'nav',
-                            'container_id'=>'main-nav-wrap',
-                            'container_class'=>'hidden lg:block',
-                            'menu_id'=>'main-nav',
-                            'menu_class'=>'px-4 lg:px-0 left-0 hidden lg:flex top-40.8 lg:top-auto fixed h-full lg:h-auto lg:relative w-full bg-light-grey lg:w-auto'
-                        ]); ?>
-                        <?php wp_nav_menu([
-                            'theme_location'=>'mobile-main',
-                            'container'=>'nav',
-                            'container_id'=>'mobile-main-nav-wrap',
-                            'container_class'=>'block lg:hidden',
-                            'menu_id'=>'mobile-main-nav',
-                            'menu_class'=>'px-4 lg:px-0 left-0 hidden top-28 lg:top-auto fixed h-full lg:h-auto lg:relative w-full bg-light-grey lg:w-auto'
-                        ]); ?>
-                        <button id="mobile-menu-button" class="block lg:hidden">
-                            <img class="block" id="mobile-menu-open-icon" src="<?php echo imagedata__getThemeImageUrl('icons/mobile-menu.png'); ?>"/>
-                            <img class="hidden" id="mobile-menu-close-icon" src="<?php echo imagedata__getThemeImageUrl('icons/x.png'); ?>"/>
-                        </button>
-                    </div>
-                </div>
             </header>
+            <div class="header__news bg-white text-md text-white text-center py-2 px-2" style="background-color: #413f3f; font-size: 14px;">
+                    <?php while(have_rows('news_bar', 'options')): the_row(); ?>
+                    <div class="header__news__item" style="line-height: 1;">
+                        <?php the_sub_field('text'); ?>
+                    </div>
+                    <?php endwhile; ?>
+            </div>
+        </div>
 
             <script>
                 var i = 0;
@@ -76,4 +85,13 @@
                         typeWriter();
                     }, 10000);
                 }
+
+                jQuery('.header__news').slick({
+                    arrows: false,
+                    draggable: false,
+                    autoplay: true,
+                    autoPlaySpeed: 7000,
+                    speed: 2000
+                });
+
             </script>
