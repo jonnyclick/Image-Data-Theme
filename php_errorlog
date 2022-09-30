@@ -1,0 +1,4 @@
+[25-Sep-2022 00:27:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/customer/www/imagedata.co.uk/public_html/web/app/themes/ImageData/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/imagedata.co.uk/public_html/web/app/themes/ImageData/index.php on line 1
