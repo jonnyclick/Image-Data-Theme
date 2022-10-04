@@ -1,5 +1,5 @@
 <?php get_header(); the_post(); ?>
-<div id="homePage">
+<div id="homePage" style="overflow-x: hidden;">
     <?php do_action('home-page-top-banner'); ?>
     <div class="block lg:flex mx-auto max-w-1397 px-8 mb-14">
         <div class="mb-12 lg:mb-0 w-full lg:w-1/2 lg:pr-10">
