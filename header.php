@@ -89,9 +89,10 @@
                 jQuery('.header__news').slick({
                     arrows: false,
                     draggable: false,
-                    autoplay: true,
-                    autoPlaySpeed: 7000,
-                    speed: 2000
+		    autoplaySpeed: 0,
+		    autoplay: 1,
+		    cssEase: 'linear',
+		    speed: 12000,
                 });
 
             </script>
