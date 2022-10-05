@@ -55,30 +55,37 @@
 <script>
         jQuery('#other-services-slider').slick({
             slidesToShow: 5,
-            slidesToScroll: 1,
-            arrows: true,
+            slidesToScroll: 5,
+            speed: 8000,
+            autoplaySpeed: 0,
             autoplay: true,
+            cssEase: 'linear',
+            arrows: false,
+            infinite: true,
             prevArrow:'<button type="button" class="slick-prev"><img src="' + '<?php echo get_stylesheet_directory_uri(); ?>' + '/assets/images/icons/chev-left.png"/></button>',
             nextArrow:'<button type="button" class="slick-next"><img src="' + '<?php echo get_stylesheet_directory_uri(); ?>' + '/assets/images/icons/chev-right.png"/></button>',
             responsive: [
                 {
                     breakpoint: 1200,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 2,
+                        slidesToScroll: 2
                     }
                 },
                 {
                     breakpoint: 800,
                     settings: {
                         arrows: false,
-                        slidesToShow: 2
+                        slidesToShow: 2,
+                        slidesToScroll: 2
                     }
                 },
                 {
                     breakpoint: 500,
                     settings: {
                         arrows: false,
-                        slidesToShow: 1
+                        slidesToShow: 1,
+                        slidesToScroll: 1
                     }
                 }
             ]

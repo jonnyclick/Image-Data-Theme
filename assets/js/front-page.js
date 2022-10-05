@@ -15,6 +15,8 @@ jQuery(document).ready(($) => {
         autoplaySpeed: 0,
         cssEase: 'linear',          
         speed: 2500,
+        cssEase: 'linear',  
+        pauseOnHover: false,
         autoplay: true,
         infinite: true,
         responsive: [

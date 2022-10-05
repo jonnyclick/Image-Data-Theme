@@ -51,10 +51,29 @@
                         </div>
                     </div>
             </header>
-            <div class="header__news bg-white text-md text-white text-center py-2 px-2" style="background-color: #413f3f; font-size: 14px;">
+            <div class="header__news bg-white text-md text-white text-center py-4 px-2" style="background-color: #413f3f; font-size: 14px;">
                     <?php while(have_rows('news_bar', 'options')): the_row(); ?>
                     <div class="header__news__item" style="line-height: 1.2;">
-                        <?php the_sub_field('text'); ?>
+                        <?php
+                            $start = get_sub_field('colour_block_start');
+                            $end = get_sub_field('colour_block_end');
+
+                            $colours = array(
+                                'blue' => '#009de0',
+                                'pink'  => '#c5017a',
+                                'yellow' => '#ffee00',
+                                'black' => '#000000',
+                                'white' => '#fff',
+                                'light_magenta' => '#9dcff4',
+                                'light_cyan' => '#df9dc3'
+                            )
+                        ?>
+
+                        <span style="display: inline-block; position: relative;">
+                            <div style="right: 100%; position: absolute; top: 50%; transform: translateY(-50%); height: 15px; width: 15px; background-color: <?php echo $colours[$start]; ?>"></div>
+                            <span style="padding-left: 10px; padding-right: 10px;"><?php the_sub_field('text'); ?>
+                            <div style="left: 100%; position: absolute; top: 50%; transform: translateY(-50%); height: 15px; width: 15px; background-color: <?php echo $colours[$end]; ?>"></div>
+                        </span>
                     </div>
                     <?php endwhile; ?>
             </div>
@@ -89,10 +108,19 @@
                 jQuery('.header__news').slick({
                     arrows: false,
                     draggable: false,
-		    autoplaySpeed: 0,
-		    autoplay: 1,
-		    cssEase: 'linear',
-		    speed: 12000,
+		            autoplaySpeed: 0,
+		            autoplay: 1,
+                    pauseOnHover: false,
+                    continousSliding: true,
+		            cssEase: 'linear',
+                    initialSlide: 0,
+                    infinite: true,
+                    arrows: false,
+                    buttons: false,
+		            speed: 12000,
+                    slidesToScroll: 1,
+                    slidesToShow: 1,
+                    variableWidth: false
                 });
 
             </script>
