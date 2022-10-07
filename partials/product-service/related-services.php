@@ -15,29 +15,53 @@
 
         $i = 0;
             while($services->have_posts()): $services->the_post();
+                // if(get_field('service_colour')) {
+                //     $serviceColour = get_field('service_colour',get_the_ID());
+                //     $serviceColourClass = imagedata__colourToClass($serviceColour,'bg-');
+                // } else {
+                //     $serviceColourClass = 'bg-black';
+                // }
+            
+                // if(get_field('service_text_colour')) {
+                //     $serviceTextColour = get_field('service_text_colour',get_the_ID());
+                //     $serviceTextColourClass = imagedata__colourToClass($serviceTextColour,'text-');
+                // } else {
+                //     $serviceTextColourClass = "text-white";
+                // }
+
+                $serviceTextColourClass = imagedata__colourToClass('white','text-');
+                $serviceColourClass =  imagedata__colourToClass('black','text-');
+                
                 if(get_field('service_colour')) {
                     $serviceColour = get_field('service_colour',get_the_ID());
                     $serviceColourClass = imagedata__colourToClass($serviceColour,'bg-');
                 } else {
                     $serviceColourClass = 'bg-black';
                 }
-            
-                if(get_field('service_text_colour')) {
-                    $serviceTextColour = get_field('service_text_colour',get_the_ID());
-                    $serviceTextColourClass = imagedata__colourToClass($serviceTextColour,'text-');
+                
+                if(get_field('service_colour') == 'yellow') {
+                    $serviceTextColourClass = imagedata__colourToClass('black','text-');
                 } else {
-                    $serviceTextColourClass = "text-white";
+                    $serviceTextColourClass = imagedata__colourToClass('white','text-');
                 }
     
-
                     ?>
-
                     <div>
-                        <div class="py-5 lg:py-0 <?php echo $serviceColourClass; ?> text-center relative flex" style="height: 197px;">
+                        <div class="py-5 lg:py-0 px-4 <?php echo $serviceColourClass; ?> text-center relative flex" style="height: 197px;">
                             <div class="w-full self-center">
                                 <a href="<?php the_permalink(); ?>">
                                 <img  class="block mx-auto max-w-4.5 mb-3.5" src="<?php echo get_field('service_icon'); ?>"/>
-                                    <h6 style="line-height: 1.4;" class="<?php echo $serviceTextColourClass; ?>"><?php the_title(); ?></h6>
+                                    <h6 style="line-height: 1.4;" class="<?php echo $serviceTextColourClass; ?>">
+                                    <?php if(get_field('service_colour') == 'yellow'): ?>
+                                        <span class="<?php echo $serviceTextColourClass ?>"><?php echo get_the_title(get_the_ID()); ?></span>
+                                    <?php else: ?>
+                                        <?php if(str_word_count(get_the_title(get_the_ID())) == 1): ?>
+                                            <span class="<?php echo imagedata__colourToClass($serviceTextColour,'yellow'); ?>"><?php echo get_the_title(get_the_ID()); ?></span>
+                                        <?php else: ?>
+                                            <?php echo imagedata__spanLastWords(get_the_title(get_the_ID()),'text-site-yellow','',1); ?>
+                                        <?php endif; ?>
+                                <?php endif; ?>
+                                    </h6>
                                 </a>
                             </div>
                         </div>

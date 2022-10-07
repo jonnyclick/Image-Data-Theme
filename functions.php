@@ -48,6 +48,7 @@ add_action('wp_enqueue_scripts',function() : void {
 
     wp_enqueue_style('slick', get_bloginfo('stylesheet_directory') . '/assets/slick/slick.css');
     wp_enqueue_script('slick', get_bloginfo('stylesheet_directory') . '/assets/slick/slick.js', ['jquery']);
+    wp_enqueue_style('shame', get_bloginfo('stylesheet_directory') . '/assets/css/shame.css');
 
     // if on the home page include slick slider
     if (is_front_page()) {
