@@ -186,7 +186,7 @@
                 .ticker-wrap .ticker__item {
                     display: inline-block;
                     padding: 0 1rem;
-                    font-size: 14px;
+                    font-size: 17px;
                     color: white;
                 }
 
