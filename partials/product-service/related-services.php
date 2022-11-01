@@ -53,7 +53,13 @@
                                 <img  class="block mx-auto max-w-4.5 mb-3.5" src="<?php echo get_field('service_icon'); ?>"/>
                                     <h6 style="line-height: 1.4;" class="<?php echo $serviceTextColourClass; ?>">
                                     <?php if(get_field('service_colour') == 'yellow'): ?>
-                                        <span class="<?php echo $serviceTextColourClass ?>"><?php echo get_the_title(get_the_ID()); ?></span>
+                                        <?php if(str_word_count(get_the_title(get_the_ID())) == 1): ?>
+                                            <span class="<?php echo $serviceTextColourClass ?>">
+                                                <?php echo get_the_title(get_the_ID()); ?>
+                                            </span>
+                                        <?php else: ?>
+                                            <span class="<?php echo $serviceTextColourClass ?>"> <?php echo imagedata__spanLastWords(get_the_title(get_the_ID()),'text-white','',1); ?></span>
+                                        <?php endif; ?>
                                     <?php else: ?>
                                         <?php if(str_word_count(get_the_title(get_the_ID())) == 1): ?>
                                             <span class="<?php echo imagedata__colourToClass($serviceTextColour,'yellow'); ?>"><?php echo get_the_title(get_the_ID()); ?></span>
@@ -85,6 +91,8 @@
             autoplay: true,
             cssEase: 'linear',
             arrows: false,
+            draggable: false,
+            pauseOnHover: false,
             infinite: true,
             prevArrow:'<button type="button" class="slick-prev"><img src="' + '<?php echo get_stylesheet_directory_uri(); ?>' + '/assets/images/icons/chev-left.png"/></button>',
             nextArrow:'<button type="button" class="slick-next"><img src="' + '<?php echo get_stylesheet_directory_uri(); ?>' + '/assets/images/icons/chev-right.png"/></button>',
