@@ -12,63 +12,47 @@
             'post__not_in' => array($current_id)
         ));
 
-
         $i = 0;
             while($services->have_posts()): $services->the_post();
-                // if(get_field('service_colour')) {
-                //     $serviceColour = get_field('service_colour',get_the_ID());
-                //     $serviceColourClass = imagedata__colourToClass($serviceColour,'bg-');
-                // } else {
-                //     $serviceColourClass = 'bg-black';
-                // }
-            
-                // if(get_field('service_text_colour')) {
-                //     $serviceTextColour = get_field('service_text_colour',get_the_ID());
-                //     $serviceTextColourClass = imagedata__colourToClass($serviceTextColour,'text-');
-                // } else {
-                //     $serviceTextColourClass = "text-white";
-                // }
 
-                $serviceTextColourClass = imagedata__colourToClass('white','text-');
-                $serviceColourClass =  imagedata__colourToClass('black','text-');
-                
-                if(get_field('service_colour')) {
-                    $serviceColour = get_field('service_colour',get_the_ID());
-                    $serviceColourClass = imagedata__colourToClass($serviceColour,'bg-');
+                // Get Data.
+                $serviceTextColour = get_field('service_text_colour');
+                $serviceLastWordColour = get_field('service_last_word_colour');
+                $serviceBackgroundColour = get_field('service_colour');
+                $serviceImageColour = get_field('service_image_colour');
+
+                // Get Classes.
+                $serviceTextColourClass = imagedata__colourToClass($serviceTextColour,'text-');
+                $serviceColourClass =  imagedata__colourToClass($serviceBackgroundColour,'bg-');
+                $serviceColourClass =  imagedata__colourToClass($serviceBackgroundColour,'bg-');
+
+                // Set Image colour depending on option
+                if($serviceImageColour == 'black') {
+                    $img_css = 'filter: brightness(0) invert(0)';
                 } else {
-                    $serviceColourClass = 'bg-black';
+                    $img_css = 'filter: brightness(0) invert(1)';
                 }
-                
-                if(get_field('service_colour') == 'yellow') {
-                    if(get_field('service_text_colour') !== 'white') {
-                        $serviceTextColourClass = imagedata__colourToClass('black','text-');
-                    }
+
+                if($serviceLastWordColour) {
+                    $serviceLastWordClass = imagedata__colourToClass($serviceLastWordColour,'text-');
                 } else {
-                    $serviceTextColourClass = imagedata__colourToClass('white','text-');
+                    $serviceLastWordClass = 'text-white';
                 }
-    
-                    ?>
+
+                ?>
                     <div>
                         <div class="py-5 lg:py-0 px-4 <?php echo $serviceColourClass; ?> text-center relative flex" style="height: 197px;">
                             <div class="w-full self-center">
                                 <a href="<?php the_permalink(); ?>">
-                                <img  class="block mx-auto max-w-4.5 mb-3.5" src="<?php echo get_field('service_icon'); ?>"/>
+                                <img  class="block mx-auto max-w-4.5 mb-3.5" style="<?php echo $img_css ?>" src="<?php echo get_field('service_icon'); ?>"/>
                                     <h6 style="line-height: 1.4;" class="<?php echo $serviceTextColourClass; ?>">
-                                    <?php if(get_field('service_colour') == 'yellow'): ?>
                                         <?php if(str_word_count(get_the_title(get_the_ID())) == 1): ?>
                                             <span class="<?php echo $serviceTextColourClass ?>">
                                                 <?php echo get_the_title(get_the_ID()); ?>
                                             </span>
                                         <?php else: ?>
-                                            <span class="<?php echo $serviceTextColourClass ?>"> <?php echo imagedata__spanLastWords(get_the_title(get_the_ID()),'text-white','',1); ?></span>
+                                            <span class="<?php echo $serviceTextColourClass ?>"> <?php echo imagedata__spanLastWords(get_the_title(get_the_ID()),$serviceLastWordClass,'',1); ?></span>
                                         <?php endif; ?>
-                                    <?php else: ?>
-                                        <?php if(str_word_count(get_the_title(get_the_ID())) == 1): ?>
-                                            <span class="<?php echo imagedata__colourToClass($serviceTextColour,'yellow'); ?>"><?php echo get_the_title(get_the_ID()); ?></span>
-                                        <?php else: ?>
-                                            <?php echo imagedata__spanLastWords(get_the_title(get_the_ID()),'text-site-yellow','',1); ?>
-                                        <?php endif; ?>
-                                <?php endif; ?>
                                     </h6>
                                 </a>
                             </div>
@@ -95,6 +79,7 @@
             arrows: false,
             draggable: false,
             pauseOnHover: false,
+            pauseOnFocus: false,
             infinite: true,
             prevArrow:'<button type="button" class="slick-prev"><img src="' + '<?php echo get_stylesheet_directory_uri(); ?>' + '/assets/images/icons/chev-left.png"/></button>',
             nextArrow:'<button type="button" class="slick-next"><img src="' + '<?php echo get_stylesheet_directory_uri(); ?>' + '/assets/images/icons/chev-right.png"/></button>',
