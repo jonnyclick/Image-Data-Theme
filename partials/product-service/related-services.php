@@ -40,7 +40,9 @@
                 }
                 
                 if(get_field('service_colour') == 'yellow') {
-                    $serviceTextColourClass = imagedata__colourToClass('black','text-');
+                    if(get_field('service_text_colour') !== 'white') {
+                        $serviceTextColourClass = imagedata__colourToClass('black','text-');
+                    }
                 } else {
                     $serviceTextColourClass = imagedata__colourToClass('white','text-');
                 }
